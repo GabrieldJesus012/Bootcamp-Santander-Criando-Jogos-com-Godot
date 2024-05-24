@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcb67fq1vjn3g"]
+
+[ext_resource type="Texture2D" uid="uid://ba4g2nvpbj045" path="res://icon.svg" id="1_c6cnc"]
+[ext_resource type="Script" path="res://player.gd" id="2_1sr1f"]
+
+[node name="World" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 655.0
+color = Color(0.678431, 0.580392, 0.945098, 1)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(269, 324)
+scale = Vector2(1.66406, 1.40625)
+texture = ExtResource("1_c6cnc")
+script = ExtResource("2_1sr1f")
+speed = 600.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 861.0
+offset_top = 136.0
+offset_right = 901.0
+offset_bottom = 176.0
+color = Color(0.222186, 0.778841, 0.391062, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 291.0
+offset_top = 93.0
+offset_right = 355.0
+offset_bottom = 133.0
+color = Color(0.222186, 0.778841, 0.391062, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = -29.0
+offset_top = 522.0
+offset_right = 35.0
+offset_bottom = 1724.0
+rotation = -1.47392
+color = Color(0.222186, 0.778841, 0.391062, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 522.0
+offset_top = 125.0
+offset_right = 586.0
+offset_bottom = 214.0
+rotation = -1.47392
+color = Color(0.222186, 0.778841, 0.391062, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = 679.0
+offset_top = 291.0
+offset_right = 743.0
+offset_bottom = 380.0
+rotation = -1.47392
+color = Color(0.222186, 0.778841, 0.391062, 1)
