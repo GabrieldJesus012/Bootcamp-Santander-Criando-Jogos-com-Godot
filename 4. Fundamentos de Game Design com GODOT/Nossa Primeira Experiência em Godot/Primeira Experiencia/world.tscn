@@ -1,4 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ber44ongjdl4p"]
+[gd_scene load_steps=4 format=3 uid="uid://ber44ongjdl4p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0uw4o"]
+friction = 0.2
+bounce = 0.35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ije54"]
 size = Vector2(64, 64)
@@ -16,56 +20,15 @@ offset_bottom = 674.0
 color = Color(0, 0.541176, 1, 1)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(353, 175)
+position = Vector2(589, 204)
+rotation = 0.587559
+physics_material_override = SubResource("PhysicsMaterial_0uw4o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-146, -52)
 shape = SubResource("RectangleShape2D_ije54")
 
 [node name="ColorRect" type="ColorRect" parent="RigidBody2D/CollisionShape2D"]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-metadata/_edit_use_anchors_ = true
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(795, 184)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(-146, -52)
-shape = SubResource("RectangleShape2D_ije54")
-
-[node name="ColorRect" type="ColorRect" parent="RigidBody2D2/CollisionShape2D"]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-metadata/_edit_use_anchors_ = true
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="."]
-position = Vector2(798, 112)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-position = Vector2(-146, -52)
-shape = SubResource("RectangleShape2D_ije54")
-
-[node name="ColorRect" type="ColorRect" parent="RigidBody2D3/CollisionShape2D"]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-metadata/_edit_use_anchors_ = true
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="."]
-position = Vector2(527, 106)
-rotation = 0.261799
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
-position = Vector2(-146, -52)
-shape = SubResource("RectangleShape2D_ije54")
-
-[node name="ColorRect" type="ColorRect" parent="RigidBody2D4/CollisionShape2D"]
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
