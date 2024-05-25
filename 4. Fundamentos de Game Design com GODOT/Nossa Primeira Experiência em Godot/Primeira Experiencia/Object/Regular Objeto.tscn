@@ -4,10 +4,9 @@
 size = Vector2(64, 64)
 
 [node name="Box regular" type="RigidBody2D"]
-position = Vector2(148, 52)
+position = Vector2(605, 259)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-146, -52)
 shape = SubResource("RectangleShape2D_ije54")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
