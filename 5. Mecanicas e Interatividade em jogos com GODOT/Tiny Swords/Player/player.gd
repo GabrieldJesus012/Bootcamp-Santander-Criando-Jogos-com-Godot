@@ -14,6 +14,8 @@ var input_vector: Vector2 = Vector2(0,0)
 #Funcoes:
 
 func _process(delta:float) -> void:
+	GameManager.player_position = position
+	
 	ready_input()
 	
 	#Processar ataque
