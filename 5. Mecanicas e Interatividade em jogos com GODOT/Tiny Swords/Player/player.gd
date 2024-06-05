@@ -89,14 +89,14 @@ func attack() -> void:
 	# Marcar ataque
 	is_attacking = true
 	
-	#aplicar dano nos inimigo
-	deal_damage_to_enemies()
 
 func deal_damage_to_enemies() -> void:
-	var enemies= get_tree().get_nodes_in_group("enemies")
-	
 	#buscar todos os inimigos 
 	#chamar funcao damage, com parametro "sword_damage"
+	var enemies= get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		enemy.damage(sword_damage)
+	
 	
 
 
