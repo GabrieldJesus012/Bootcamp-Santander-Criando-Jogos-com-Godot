@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
 @export var speed: float = 3
+@export var sword_damage: int = 2
 
 #Variaveis
 var is_running: bool = false
@@ -87,8 +88,16 @@ func attack() -> void:
 	
 	# Marcar ataque
 	is_attacking = true
+	
+	#aplicar dano nos inimigo
+	deal_damage_to_enemies()
 
-
+func deal_damage_to_enemies() -> void:
+	var enemies= get_tree().get_nodes_in_group("enemies")
+	
+	#buscar todos os inimigos 
+	#chamar funcao damage, com parametro "sword_damage"
+	
 
 
 

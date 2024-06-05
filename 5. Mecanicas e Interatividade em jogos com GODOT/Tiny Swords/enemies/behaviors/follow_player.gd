@@ -2,8 +2,8 @@ extends Node
 
 @export var speed= 1.0
 
+var enemy: Enemy
 var sprite: AnimatedSprite2D
-var enemy: CharacterBody2D
 
 func _ready():
 	enemy = get_parent() 
