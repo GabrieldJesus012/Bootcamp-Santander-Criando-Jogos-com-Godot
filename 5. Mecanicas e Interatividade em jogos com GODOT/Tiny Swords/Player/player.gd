@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
+@onready var sword_area: Area2D =$SwordArea
+
 @export var speed: float = 3
 @export var sword_damage: int = 2
 
@@ -26,7 +28,8 @@ func _process(delta:float) -> void:
 		
 	#processar animação e rotação de sprite
 	play_run_iddle_animation()
-	rotate_sprite()
+	if not is_attacking:
+		rotate_sprite()
 
 func _physics_process(delta:float) -> void:
 	#modificar a velocidade
@@ -91,11 +94,20 @@ func attack() -> void:
 	
 
 func deal_damage_to_enemies() -> void:
-	#buscar todos os inimigos 
-	#chamar funcao damage, com parametro "sword_damage"
-	var enemies= get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.damage(sword_damage)
+	var bodies= sword_area.get_overlapping_bodies() #pegar todos os corpos fisicos da area
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			#calcular direção do inimigo para personagem
+			var direction_to_enemy=(enemy.position-position).normalized()  #normalized= 1 de comprimento
+			var attack_direction: Vector2
+			if sprite.flip_h:
+				attack_direction = Vector2.LEFT
+			else:
+				attack_direction = Vector2.RIGHT
+			var dot_product = direction_to_enemy.dot(attack_direction)
+			if dot_product >=0.3:
+				enemy.damage(sword_damage)
 	
 	
 
