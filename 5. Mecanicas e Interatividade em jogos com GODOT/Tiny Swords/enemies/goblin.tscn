@@ -63,7 +63,7 @@ height = 68.0
 scale = Vector2(1.70845, 1.70845)
 motion_mode = 1
 script = ExtResource("1_36g7o")
-health = 10
+health = 16
 death_prefab = ExtResource("2_oa8ac")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
