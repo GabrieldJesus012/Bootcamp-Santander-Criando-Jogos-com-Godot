@@ -253,6 +253,7 @@ _data = {
 radius = 107.042
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug6fq"]
+radius = 47.0
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -283,7 +284,9 @@ position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_k4b8d")
 debug_color = Color(0.960784, 0, 0, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(0, -21)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CircleShape2D_ug6fq")
+debug_color = Color(0.968627, 0, 0.0901961, 0.121569)

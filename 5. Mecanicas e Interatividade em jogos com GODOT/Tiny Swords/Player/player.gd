@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var sword_area: Area2D =$SwordArea
+@onready var hitbox_area: Area2D =$HitboxArea
 
 @export var speed: float = 3
 @export var sword_damage: int = 2
@@ -14,6 +15,7 @@ var is_running: bool = false
 var was_running: bool = false
 var is_attacking: bool = false
 var attack_cooldown: float =0.0
+var hitbox_cooldown: float= 0.0
 var input_vector: Vector2 = Vector2(0,0)
 
 #Funcoes:
@@ -32,6 +34,9 @@ func _process(delta:float) -> void:
 	play_run_iddle_animation()
 	if not is_attacking:
 		rotate_sprite()
+		
+	#Processar dano
+	uptade_hitbox_detection(delta)
 
 func _physics_process(delta:float) -> void:
 	#modificar a velocidade
@@ -110,7 +115,25 @@ func deal_damage_to_enemies() -> void:
 			if dot_product >=0.3:
 				enemy.damage(sword_damage)
 
+func uptade_hitbox_detection(delta:float):
+	#temporarizador
+	hitbox_cooldown-= delta
+	if hitbox_cooldown >0: return
+	
+	#frequencia
+	hitbox_cooldown = 0.5
+	
+	#detectar inimigo
+	var bodies= hitbox_area.get_overlapping_bodies() #pegar todos os corpos fisicos da area
+	for body in bodies:
+		if body.is_in_group("enemies"):
+			var enemy: Enemy = body
+			var damage_amount = 1
+			damage(damage_amount)
+
 func damage(amount: int)-> void:
+	if health<=0: return
+	
 	health-= amount
 	
 	#piscar node
