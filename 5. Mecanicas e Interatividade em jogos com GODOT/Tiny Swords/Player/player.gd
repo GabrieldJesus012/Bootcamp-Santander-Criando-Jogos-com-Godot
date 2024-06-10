@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @export var speed: float = 3
 @export var sword_damage: int = 2
+@export var health: int= 50
+@export var death_prefab: PackedScene
 
 #Variaveis
 var is_running: bool = false
@@ -91,7 +93,6 @@ func attack() -> void:
 	
 	# Marcar ataque
 	is_attacking = true
-	
 
 func deal_damage_to_enemies() -> void:
 	var bodies= sword_area.get_overlapping_bodies() #pegar todos os corpos fisicos da area
@@ -108,9 +109,28 @@ func deal_damage_to_enemies() -> void:
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			if dot_product >=0.3:
 				enemy.damage(sword_damage)
-	
-	
 
+func damage(amount: int)-> void:
+	health-= amount
+	
+	#piscar node
+	modulate= Color.RED
+	var tween= create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	
+	#processar morte
+	if health <=0:
+		die()
+
+func die():
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		death_object.position = position
+		get_parent().add_child(death_object)
+	
+	queue_free()
 
 
 
