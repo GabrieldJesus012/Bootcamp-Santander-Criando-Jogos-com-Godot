@@ -1,0 +1,27 @@
+extends Node2D
+
+@export var creatures: Array[PackedScene] # e arrastrei os mobs criados para ele
+@export var mobs_por_minuto:float= 60.0
+
+@onready var path_follow_2d: PathFollow2D = %PathFollow2D
+var cooldown: float = 0.0
+
+func _process(delta:float):
+	#temporarizador(coodown)
+	cooldown-=delta
+	if cooldown>0: return
+	
+	#frequencia: Monstros por minuto
+	var interval = 60.0/ mobs_por_minuto
+	cooldown= interval
+	
+	#Instanciar uma criatura aleatoria
+	var index= randi_range(0, creatures.size()-1)
+	var creature_scene = creatures[index]
+	var creature = creature_scene.instantiate()
+	creature.global_position = get_point()
+	get_parent().add_child(creature)
+
+func get_point() -> Vector2:
+	path_follow_2d.progress_ratio = randf() #retornar valor aleatorio
+	return path_follow_2d.global_position
