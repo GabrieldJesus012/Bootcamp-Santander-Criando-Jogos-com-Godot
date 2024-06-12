@@ -93,9 +93,31 @@ func attack() -> void:
 	#attack_side_1 e #attack_side_2 (as animações que criamos)
 	if is_attacking:
 		return
-		
-	#tocar a animação
-	animation_player.play("attack_side_1")
+	
+	#tocar animação de atack
+	# Verificar se o jogador está se movendo para cima
+	if input_vector.y < 0:
+	# Escolher aleatoriamente entre attack_up_1 e attack_up_2
+		var random_attack = randi() % 2
+		if random_attack == 0:
+			animation_player.play("attack_up_1")
+		else:
+			animation_player.play("attack_up_2")
+	elif input_vector.y > 0:
+		# Escolher aleatoriamente entre attack_down_1 e attack_down_2
+		var random_attack = randi() % 2
+		if random_attack == 0:
+			animation_player.play("attack_down_1")
+		else:
+			animation_player.play("attack_down_2")
+	else:
+	# Escolher aleatoriamente entre attack_side_1 e attack_side_2
+		var random_attack = randi() % 2
+		if random_attack == 0:
+			animation_player.play("attack_side_1")
+		else:
+			animation_player.play("attack_side_2")
+	
 	attack_cooldown= 0.6
 	
 	# Marcar ataque
@@ -109,10 +131,15 @@ func deal_damage_to_enemies() -> void:
 			#calcular direção do inimigo para personagem
 			var direction_to_enemy=(enemy.position-position).normalized()  #normalized= 1 de comprimento
 			var attack_direction: Vector2
-			if sprite.flip_h:
-				attack_direction = Vector2.LEFT
+			if input_vector.y < 0: # Ataque para cima
+				attack_direction = Vector2.UP
+			elif input_vector.y > 0:  # Ataque para baixo
+				attack_direction = Vector2.DOWN
 			else:
-				attack_direction = Vector2.RIGHT
+				if sprite.flip_h:
+					attack_direction = Vector2.LEFT
+				else:
+					attack_direction = Vector2.RIGHT
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			if dot_product >=0.3:
 				enemy.damage(sword_damage)

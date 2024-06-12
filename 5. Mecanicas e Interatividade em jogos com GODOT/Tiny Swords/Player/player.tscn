@@ -251,10 +251,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4b8d"]
-radius = 107.042
+radius = 118.152
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ug6fq"]
-radius = 47.0
+radius = 48.0416
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
