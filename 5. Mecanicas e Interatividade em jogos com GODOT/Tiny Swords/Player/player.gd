@@ -6,8 +6,15 @@ extends CharacterBody2D
 @onready var sword_area: Area2D =$SwordArea
 @onready var hitbox_area: Area2D =$HitboxArea
 
+@export_category("Movement")
 @export var speed: float = 3
+@export_category("Sword")
 @export var sword_damage: int = 2
+@export_category("Ritual")
+@export var ritual_damage: int = 1
+@export var ritual_interval: float = 30
+@export var ritual_scene: PackedScene
+@export_category("Life")
 @export var health: int= 50
 @export var max_health: int = 100
 @export var death_prefab: PackedScene
@@ -19,6 +26,7 @@ var is_attacking: bool = false
 var attack_cooldown: float =0.0
 var hitbox_cooldown: float= 0.0
 var input_vector: Vector2 = Vector2(0,0)
+var ritual_cooldown: float= 0.0
 
 #Funcoes:
 
@@ -39,6 +47,9 @@ func _process(delta:float) -> void:
 		
 	#Processar dano
 	uptade_hitbox_detection(delta)
+	
+	#Ritual
+	update_ritual(delta)
 
 func _physics_process(delta:float) -> void:
 	#modificar a velocidade
@@ -190,5 +201,16 @@ func heal(amount:int):
 		health = max_health
 	return health
 
+func update_ritual(delta:float):
+	#atualizar tempo
+	ritual_cooldown-=delta
+	if ritual_cooldown>0: return
+	ritual_cooldown = ritual_interval
+	
+	#criar o ritual
+	var ritual = ritual_scene.instantiate()
+	ritual.damage_amount = ritual_damage
+	add_child(ritual)
+	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dduib2707y476"]
+[gd_scene load_steps=10 format=3 uid="uid://dduib2707y476"]
 
 [ext_resource type="Script" path="res://misc/ritual.gd" id="1_7s2u2"]
 [ext_resource type="Texture2D" uid="uid://b2cnvfep884pb" path="res://Addons/kenney_particle-pack/PNG (Transparent)/circle_03.png" id="1_x0rxj"]
@@ -157,6 +157,20 @@ tracks/5/keys = {
 "method": &"deal_damage"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2l57"]
 _data = {
@@ -166,6 +180,9 @@ _data = {
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_adpru"]
 blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmskp"]
+radius = 206.444
 
 [node name="Ritual" type="Node2D"]
 scale = Vector2(2.08815, 1.70764)
@@ -197,3 +214,8 @@ material = SubResource("CanvasItemMaterial_adpru")
 rotation = 1.5708
 scale = Vector2(1.48513, 1.36648)
 texture = ExtResource("3_wty8y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xmskp")
