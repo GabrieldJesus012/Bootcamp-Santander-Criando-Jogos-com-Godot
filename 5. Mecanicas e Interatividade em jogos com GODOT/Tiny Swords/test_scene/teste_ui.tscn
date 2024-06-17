@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://742rqixql0li"]
+
+[ext_resource type="PackedScene" uid="uid://bqup6jvlp5e13" path="res://player/player.tscn" id="1_myrnc"]
+[ext_resource type="Texture2D" uid="uid://c83grqx2jjcjp" path="res://Addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="2_fsmyp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liwwp"]
+texture = ExtResource("2_fsmyp")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7rag"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2d" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_myrnc")]
+position = Vector2(445, 300)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 21.0
+offset_right = 46.0
+offset_bottom = 44.0
+grow_horizontal = 2
+text = "08:50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -342.0
+offset_top = 22.0
+offset_right = -15.0
+offset_bottom = 128.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_liwwp")
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -31.0
+offset_right = 136.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "20.000 Gold"
+label_settings = SubResource("LabelSettings_d7rag")
+
+[node name="MeetLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.5
+offset_top = -32.0
+offset_right = -33.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "50 Meet"
+label_settings = SubResource("LabelSettings_d7rag")

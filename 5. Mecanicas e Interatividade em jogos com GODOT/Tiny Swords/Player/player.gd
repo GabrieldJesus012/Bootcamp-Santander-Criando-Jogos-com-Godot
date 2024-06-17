@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var sword_area: Area2D =$SwordArea
 @onready var hitbox_area: Area2D =$HitboxArea
+@onready var health_progress_bar: ProgressBar = $HeathProgressBar
 
 @export_category("Movement")
 @export var speed: float = 3
@@ -50,6 +51,10 @@ func _process(delta:float) -> void:
 	
 	#Ritual
 	update_ritual(delta)
+	
+	#atualizar HeathBar
+	health_progress_bar.max_value = max_health
+	health_progress_bar.value= health
 
 func _physics_process(delta:float) -> void:
 	#modificar a velocidade
