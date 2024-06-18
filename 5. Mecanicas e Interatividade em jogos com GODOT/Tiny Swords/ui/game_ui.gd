@@ -1,10 +1,14 @@
 extends CanvasLayer
 
 @onready var time_label = %TimeLabel
-@onready var gold_label = %GoldLabel
-@onready var Neet_label = %MeetLabel
+@onready var Meet_label = %MeetLabel
 
 var time_elapsed: float= 0.0
+var meat_count: int = 0
+
+func _ready():
+	GameManager.player.meat_collected.connect(on_meat_collected)
+	Meet_label.text = str(meat_count)
 
 func _process(delta:float):
 	time_elapsed +=delta
@@ -18,3 +22,8 @@ func _process(delta:float):
 	# - % formatar algo - d digito - 02 2 digitos e : da hora ex: 03:20 
 	
 	time_label.text = "%02d:%02d"  % [minutes, second]
+
+func on_meat_collected (value:int):
+	meat_count += 1
+	Meet_label.text = str(meat_count)
+	

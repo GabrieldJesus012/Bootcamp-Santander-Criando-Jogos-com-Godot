@@ -29,7 +29,12 @@ var hitbox_cooldown: float= 0.0
 var input_vector: Vector2 = Vector2(0,0)
 var ritual_cooldown: float= 0.0
 
+signal  meat_collected(value:int)
+
 #Funcoes:
+
+func _ready():
+	GameManager.player = self
 
 func _process(delta:float) -> void:
 	GameManager.player_position = position
