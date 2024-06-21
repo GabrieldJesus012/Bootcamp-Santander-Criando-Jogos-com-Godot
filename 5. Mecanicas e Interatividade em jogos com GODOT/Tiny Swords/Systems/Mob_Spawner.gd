@@ -1,7 +1,8 @@
+class_name MobSpawner
 extends Node2D
 
 @export var creatures: Array[PackedScene] # e arrastrei os mobs criados para ele
-@export var mobs_por_minuto:float= 60.0
+var mobs_por_minuto:float= 60.0
 
 @onready var path_follow_2d: PathFollow2D = %PathFollow2D
 var cooldown: float = 0.0
