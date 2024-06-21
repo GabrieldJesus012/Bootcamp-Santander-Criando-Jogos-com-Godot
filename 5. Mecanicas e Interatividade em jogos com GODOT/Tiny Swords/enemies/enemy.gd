@@ -2,11 +2,16 @@ class_name Enemy
 
 extends Node2D
 
+@export_category("life")
 @export var health: int= 8
 @export var death_prefab: PackedScene
 var damage_digit_prefab: PackedScene
 
 @onready var damage_digit_marker = $DamageDigitMarker
+
+@export_category("drops")
+@export var drop_chance: float = 0.1
+@export var drop_items: Array [PackedScene]
 
 func _ready():
 	damage_digit_prefab = preload("res://misc/damage_digit.tscn")

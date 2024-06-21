@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqntjhy1kuddw"]
+[gd_scene load_steps=14 format=3 uid="uid://cqntjhy1kuddw"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_36g7o"]
 [ext_resource type="PackedScene" uid="uid://o3uwc2t2jxd3" path="res://misc/skull.tscn" id="2_oa8ac"]
 [ext_resource type="Texture2D" uid="uid://brnu1q1n1sbep" path="res://Addons/Tiny Swords/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_1e2lm"]
+[ext_resource type="PackedScene" uid="uid://7khdr78053i8" path="res://misc/meet.tscn" id="3_htyjr"]
 [ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="4_os2y0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ck32"]
@@ -65,6 +66,8 @@ motion_mode = 1
 script = ExtResource("1_36g7o")
 health = 16
 death_prefab = ExtResource("2_oa8ac")
+drop_chance = 0.2
+drop_items = Array[PackedScene]([ExtResource("3_htyjr")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -21)
