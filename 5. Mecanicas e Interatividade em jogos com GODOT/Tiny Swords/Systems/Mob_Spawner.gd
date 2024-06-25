@@ -8,6 +8,9 @@ var mobs_por_minuto:float= 60.0
 var cooldown: float = 0.0
 
 func _process(delta:float):
+	#ignorar caso gameover
+	if GameManager.is_game_over: return
+	
 	#temporarizador(coodown)
 	cooldown-=delta
 	if cooldown>0: return
