@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://5pu0re6nicg3"]
+[gd_scene load_steps=36 format=3 uid="uid://5pu0re6nicg3"]
 
 [ext_resource type="PackedScene" uid="uid://bqup6jvlp5e13" path="res://player/player.tscn" id="1_1gl0w"]
 [ext_resource type="PackedScene" uid="uid://de025vk8s5nb" path="res://Systems/mob_spawner.tscn" id="2_jfbo7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dw16w5pjwnc38" path="res://Addons/Tiny Swords/Terrain/Water/Foam/Foam.png" id="9_dcf2x"]
 [ext_resource type="Script" path="res://Systems/difficulty_system.gd" id="11_1klno"]
 [ext_resource type="PackedScene" uid="uid://b4k8ag41g4yxl" path="res://misc/tree.tscn" id="13_di10q"]
+[ext_resource type="PackedScene" uid="uid://nxghod17kjow" path="res://ui/game_over_ui.tscn" id="15_0pt5l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sf6f"]
 texture = ExtResource("4_0mh14")
@@ -314,8 +315,6 @@ mob_spawner = NodePath("../MobSpawner")
 [node name="MobSpawner" parent="." instance=ExtResource("2_jfbo7")]
 position = Vector2(581, 310)
 
-[node name="GameUi" parent="." instance=ExtResource("3_efj3g")]
-
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -477,3 +476,7 @@ position = Vector2(242, -277)
 
 [node name="tree6" parent="Trees" instance=ExtResource("13_di10q")]
 position = Vector2(-431, -14)
+
+[node name="GameUi" parent="." instance=ExtResource("3_efj3g")]
+
+[node name="GameOverUi" parent="." instance=ExtResource("15_0pt5l")]
