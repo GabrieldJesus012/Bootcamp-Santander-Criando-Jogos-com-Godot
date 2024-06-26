@@ -50,7 +50,9 @@ func die():
 	#drop
 	if randf() <= drop_chance:
 		drop_item()
-		
+	
+	GameManager.monsters_count +=1
+	
 	# deletar node
 	queue_free()
 

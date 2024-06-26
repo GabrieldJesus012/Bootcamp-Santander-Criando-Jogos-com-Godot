@@ -35,6 +35,7 @@ signal  meat_collected(value:int)
 
 func _ready():
 	GameManager.player = self
+	meat_collected.connect(func(value:int):GameManager.meat_count +=1)
 
 func _process(delta:float) -> void:
 	GameManager.player_position = position

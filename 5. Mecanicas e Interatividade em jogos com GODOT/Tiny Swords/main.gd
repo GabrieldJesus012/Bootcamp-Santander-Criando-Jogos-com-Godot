@@ -14,6 +14,4 @@ func trigger_game_over():
 	
 	#criar GameOverUi
 	var game_over = game_over_ui.instantiate()
-	game_over.monsters_defeated = 999
-	game_over.time_survived = "01:58"
 	add_child(game_over)
